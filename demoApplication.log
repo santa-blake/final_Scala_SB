@@ -85,3 +85,18 @@
 2020-12-31 16:04:46 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
 2020-12-31 16:07:51 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 2020-12-31 16:08:07 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 13:49:25 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 13:49:40 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 14:01:18 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:01:38 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 14:03:03 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:03:24 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 14:20:45 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:21:06 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 14:25:36 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:25:55 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 14:28:48 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:29:04 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+2021-01-04 14:41:51 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:56:38 WARN  NativeCodeLoader:62 - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2021-01-04 14:56:54 WARN  ProcfsMetricsGetter:69 - Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
