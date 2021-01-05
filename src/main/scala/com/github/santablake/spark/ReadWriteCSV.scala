@@ -110,6 +110,8 @@ object ReadWriteCSV extends App {
     .agg(functions.sum("average_trade")
       .as("avg_trade_by_stock"))
     .sort(desc("avg_trade_by_stock"))
-    // .show()
+    //.show()
+
+  TradesByStock.show()
 
 }
