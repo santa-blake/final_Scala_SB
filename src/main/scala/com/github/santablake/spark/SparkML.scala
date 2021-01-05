@@ -17,9 +17,7 @@ object SparkML extends App {
   df0.show()
   df0.summary().show()
 
-//  Bonus Question
-//    Which stock was the most volatile as measured by annualized standard deviation of daily returns?
-//
+
 //  Big Bonus: Build a model either trying to predict the next day's price(regression) or simple UP/DOWN/UNCHANGED? classificator. You can only use information information from earlier dates.
 //
 //    You can use other information if you wish from other sources for this predictor, the only thing what you can not do is use future data. :)

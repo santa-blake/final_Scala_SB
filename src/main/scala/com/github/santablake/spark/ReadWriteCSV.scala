@@ -1,10 +1,9 @@
 package com.github.santablake.spark
 
-
 import org.apache.spark.sql.functions.{col, desc, lit, round}
 import org.apache.spark.sql.{SparkSession, functions}
 
-object ReadDataCSV extends App {
+object ReadWriteCSV extends App {
 
   val session = SparkSession.builder().appName("test").master("local").getOrCreate()
 
@@ -111,5 +110,6 @@ object ReadDataCSV extends App {
     .agg(functions.sum("average_trade")
       .as("avg_trade_by_stock"))
     .sort(desc("avg_trade_by_stock"))
-    .show()
+    // .show()
+
 }
