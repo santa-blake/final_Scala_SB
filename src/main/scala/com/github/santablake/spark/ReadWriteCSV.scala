@@ -1,7 +1,7 @@
 package com.github.santablake.spark
 
 import com.github.mrpowers.spark.daria.sql.DariaWriters
-import org.apache.spark.sql.functions.{col, desc, lit, round}
+import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{SparkSession, functions}
 
 object ReadWriteCSV extends App {
@@ -80,6 +80,7 @@ object ReadWriteCSV extends App {
     tmpFolder = "./src/resources/tmp2",
     filename = "./src/resources/stocksDaria.csv"
   )
+
       // previously written/saved versions in .csv format multi-file folder way
 
   //val tmpPath = "./src/resources/returns.csv"
@@ -142,4 +143,21 @@ object ReadWriteCSV extends App {
 
   println(s"Calculating most frequently selled stock returns: ${BestStockTicker} with value ${BestStockValue} on average.")
 
+
+  //  Bonus Question
+  // Which stock was the most volatile as measured by annualized standard deviation of daily returns?
+
+  val ByYears = DailyAverageReturnsEveryStock
+    .withColumn("year", regexp_extract(col("date"), "\\d{4}", 0))
+    .groupBy("ticker", "year")
+    .agg(stddev("average_return") * sqrt(count("average_return")))
+    .orderBy(desc("(stddev_samp(average_return) * SQRT(count(average_return)))"))
+   .withColumnRenamed("(stddev_samp(average_return) * SQRT(count(average_return)))","annual_STD_deviation")
+  ByYears.show()
+
+    val VolStockName = ByYears.select(col("ticker")).first().toString()
+    val VolStockYear = ByYears.select(col("year")).first().toString()
+    val VolStockSD = ByYears.select(col("annual_STD_deviation")).first().toString()
+
+  println(s"Answer is: $VolStockName in $VolStockYear with STDDEV: $VolStockSD .")
 }
