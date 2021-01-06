@@ -62,6 +62,7 @@ object ReadWriteCSV extends App {
 
  DailyAverageReturnsEveryStock.show()
 
+
   //2. Save the results to the file as Parquet (CSV and SQL are optional)
 
   DariaWriters.writeSingleFile(
@@ -105,19 +106,6 @@ object ReadWriteCSV extends App {
 //  dir2.listFiles.foreach(println)
 
 
-  // SQL way, saving as SQL dataframe on screen (output SQL file not saved - this to be done by connecting to SQL DB online)
-
-  df0.createOrReplaceTempView("stock_prices_table")
-
-  val BestAverageReturns = session.sql( "SELECT ticker, (SUM(close * volume)/COUNT(ticker))/1000 AS BestAverageReturns " +
-    "FROM stock_prices_table " +
-    "GROUP BY ticker " +
-    "ORDER BY BestAverageReturns DESC")
-    BestAverageReturns.show()
-
-  println(s"Calculating stock returns by avg price*volume, the best stock returns: ${BestAverageReturns.select(col("ticker")).first()}.")
-
-
   //  3. Which stock was traded most frequently - as measured by closing price * volume - on average?
 
   val marksColumns3 = Array(col("volume"), col("close"))
@@ -136,4 +124,22 @@ object ReadWriteCSV extends App {
       .as("avg_trade_by_stock"))
     .sort(desc("avg_trade_by_stock"))
   TradesByStock.show()
+
+  // or SQL method version, same question
+  // saving as SQL dataframe on screen (output SQL file not saved - this to be done by connecting to SQL DB online)
+
+  df0.createOrReplaceTempView("stock_prices_table")
+
+  val BestTradedStock = session.sql( "SELECT ticker, ROUND((SUM(close * volume)/COUNT(volume))/1000,2) AS BestTradedStockReduced1000 " +
+    "FROM stock_prices_table " +
+    "GROUP BY ticker " +
+    "ORDER BY BestTradedStockReduced1000 DESC " +
+    "LIMIT 1 ")
+  BestTradedStock.show()
+
+  val BestStockTicker = BestTradedStock.select(col("ticker")).first().toString()
+  val BestStockValue =  BestTradedStock.select(col("BestTradedStockReduced1000")).first().toString()
+
+  println(s"Calculating most frequently selled stock returns: ${BestStockTicker} with value ${BestStockValue} on average.")
+
 }
