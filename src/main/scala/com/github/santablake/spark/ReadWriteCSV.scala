@@ -87,7 +87,8 @@ object ReadWriteCSV extends App {
 
 //  AverageReturnsByDates
 //    .coalesce(1)
-//    .write.option("header","true")
+//    .write
+  //  .option("header","true")
 //    .format("csv")
 //    .mode("overwrite")
 //    .save(tmpPath)
@@ -99,7 +100,8 @@ object ReadWriteCSV extends App {
 
 // DailyAverageReturnsEveryStock
 //    .coalesce(1)
-//    .write.option("header","true")
+//    .write
+  //  .option("header","true")
 //    .format("csv")
 //    .mode("overwrite")
 //    .save(tmpPath2)
